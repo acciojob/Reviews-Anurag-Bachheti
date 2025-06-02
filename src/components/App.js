@@ -4,12 +4,14 @@ import Review from './Review';
 function App() {
 
 
-  return (
-    <div>
-       <h1 id="review-heading">Our Reviews</h1>
-        <Review/>
-    </div>
-  )
-}
+    return (
+        <main>
+            <section className="container">
+                <h1 id="review-heading">Our Reviews</h1>
+                <Review />
+            </section>
+        </main>
+    );
+};
 
-export default App
+export default App;
