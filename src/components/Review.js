@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-// Predefined data array
 const reviews = [
   {
     id: 1,
@@ -42,15 +41,25 @@ const reviews = [
 
 const Review = () => {
   const [index, setIndex] = useState(0);
+
   const { id, name, job, image, text } = reviews[index];
 
-  // Handlers
+  const checkIndex = (number) => {
+    if (number < 0) {
+      return reviews.length - 1;
+    }
+    if (number >= reviews.length) {
+      return 0;
+    }
+    return number;
+  };
+
   const prevReview = () => {
-    setIndex((prevIndex) => (prevIndex === 0 ? reviews.length - 1 : prevIndex - 1));
+    setIndex((prevIndex) => checkIndex(prevIndex - 1));
   };
 
   const nextReview = () => {
-    setIndex((prevIndex) => (prevIndex === reviews.length - 1 ? 0 : prevIndex + 1));
+    setIndex((prevIndex) => checkIndex(prevIndex + 1));
   };
 
   const randomReview = () => {
@@ -67,11 +76,11 @@ const Review = () => {
       <h4 id={`author-${id}`} className="author">{name}</h4>
       <p className="job">{job}</p>
       <p className="info">{text}</p>
-      <div>
-        <button className="prev-btn" onClick={prevReview}>Prev</button>
-        <button className="next-btn" onClick={nextReview}>Next</button>
+      <div className="button-container">
+        <button className="prev-btn" onClick={prevReview}>prev</button>
+        <button className="next-btn" onClick={nextReview}>next</button>
       </div>
-      <button className="random-btn" onClick={randomReview}>Surprise Me</button>
+      <button className="random-btn" onClick={randomReview}>surprise me</button>
     </article>
   );
 };
