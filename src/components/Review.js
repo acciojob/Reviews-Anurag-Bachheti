@@ -44,17 +44,11 @@ const Review = () => {
     const { id, name, job, image, text } = reviews[index];
 
     const prevReview = () => {
-        setIndex((prevIndex) => {
-            const newIndex = prevIndex === 0 ? reviews.length - 1 : prevIndex - 1;
-            return newIndex;
-        });
+        setIndex((prevIndex) => (prevIndex === 0 ? reviews.length - 1 : prevIndex - 1));
     };
 
     const nextReview = () => {
-        setIndex((prevIndex) => {
-            const newIndex = prevIndex === reviews.length - 1 ? 0 : prevIndex + 1;
-            return newIndex;
-        });
+        setIndex((prevIndex) => (prevIndex === reviews.length - 1 ? 0 : prevIndex + 1   ));
     };
 
     const randomReview = () => {
@@ -67,7 +61,7 @@ const Review = () => {
 
 
     return (
-        <div className="review">
+        <article className="review">
             <img src={image} alt={name} className="person-img" />
             <h4 id={`author-${id}`} className="author">
                 {name}
@@ -75,10 +69,12 @@ const Review = () => {
             <p className="job">{job}</p>
             <p className="info">{text}</p>
 
-            <button className="prev-btn" onClick={prevReview}>Prev</button>
-            <button className="next-btn" onClick={nextReview}>Next</button>
+            <div>
+                <button className="prev-btn" onClick={prevReview}>Prev</button>
+                <button className="next-btn" onClick={nextReview}>Next</button>
+            </div>
             <button className="random-btn" onClick={randomReview}>Surprise Me</button>
-        </div>
+        </article>
     )
 }
 
